@@ -1,16 +1,10 @@
-# syntax = docker/dockerfile:1.1-experimental
-FROM ubuntu
+# Pythonランタイムを親イメージとして使用
+FROM rilldata/rill:latest
 
-RUN apt-get update && apt-get install -y ca-certificates
+# 作業ディレクトリを/appに設定
+WORKDIR /app
 
-COPY rill /usr/local/bin
-RUN chmod 777 /usr/local/bin/rill
+# 現在のディレクトリの内容をコンテナ内の/appにコピー
+COPY . /app
 
-RUN groupadd -g 1001 rill \
-    && useradd -m -u 1001 -s /bin/sh -g rill rill
-USER rill
-
-RUN rill runtime install-duckdb-extensions
-
-ENTRYPOINT ["rill"]
-CMD ["start", "my-rill-project"]
+CMD ["rill", "start", "my-rill-project"]
