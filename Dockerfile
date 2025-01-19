@@ -1,5 +1,9 @@
 FROM --platform=linux/amd64 ubuntu:20.04
 
+WORKDIR/ app
+
+COPY install_rill.txt ./
+
 # 必要なパッケージのインストール
 RUN apt-get update && apt-get install -y \
     curl \
