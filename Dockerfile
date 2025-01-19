@@ -20,4 +20,4 @@ RUN sudo rill upgrade
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && sudo ./aws/install
 
 # CMD ["rill", "start", "--readonly"]
-CMD ["rill", "start", "my-rill-project]
+CMD ["rill", "start", "my-rill-project"]
